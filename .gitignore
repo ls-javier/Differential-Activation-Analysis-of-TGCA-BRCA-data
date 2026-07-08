@@ -1,8 +1,8 @@
 # Files larger than 100 MB (GitHub/Git limit)
-image.RData
-BRCA_exp_matrix.tsv
-outputs/01_data_norm.tsv
-outputs/data_norm.tsv
+data/BRCA_exp_matrix.tsv
+bin/image.RData
+bin/outputs/01_data_norm.tsv
+bin/outputs/data_norm.tsv
 
 # Temporary files
 *.tmp
@@ -15,7 +15,10 @@ outputs/data_norm.tsv
 Thumbs.db
 
 # Folder: signaling pathway maps
-rutas_señalizacion/
+pdf/rutas_señalizacion/
 
 # Activity statement PDF
-U6-actividad-R-HIPATHIA.pdf
+pdf/U6-actividad-R-HIPATHIA.pdf
+
+# Workshop script
+bin/taller_hipathia_covid.R

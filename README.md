@@ -30,24 +30,38 @@ The analysis compares **ER-positive (ER+)** versus **ER-negative (ER-)** luminal
 
 ```
 .
-├── Analisis_activacion_diferencial.R           # Main analysis script (R)
-├── analisis_activacion_diferencial_JLS.Rmd      # R Markdown report (Spanish)
-├── analisis_activacion_diferencial_JLS.pdf      # Compiled PDF report
-├── clinical_info_TCGA-BRCA.tsv                  # Clinical metadata (TCGA-BRCA)
-├── outputs/                                     # Results and intermediate files
-│   ├── 01_data_norm.tsv                         # Normalized expression matrix
-│   ├── 01_listGenes.tsv                         # Significant gene list
-│   ├── 02_SumExp_ER                             # SummarizedExperiment object
-│   ├── 03_pathways_object.rds                   # KEGG pathways (hiPathia)
-│   ├── 03_path_activity_matrix.rds            # Circuit activation matrix
-│   ├── 03_results_object.rds                    # hiPathia results object
-│   ├── 04_wilcoxon_circuitos.csv                # Wilcoxon test results (all circuits)
-│   ├── 04_wilcoxon_circuitos_significativos.csv # Significant circuits only
-│   ├── 04_heatmap_paths.png                     # Heatmap of top 20 circuits
-│   ├── 01_boxplots.png                          # QC: raw vs normalized boxplots
-│   └── 02_boxplot_norm01.png                    # QC: normalized distribution
-├── taller_hipathia_covid.R                      # Supplementary Hipathia workshop script
-└── README.md                                    # This file
+├── bin/                                         # Scripts and intermediate/output files
+│   ├── Analisis_activacion_diferencial.R         # Main analysis script (R)
+│   ├── analisis_activacion_diferencial_JLS.Rmd   # R Markdown report (Spanish)
+│   ├── taller_hipathia_covid.R                   # Supplementary Hipathia workshop script
+│   ├── image.RData                               # Large R workspace image (>100 MB, ignored)
+│   └── outputs/                                  # Results and intermediate files
+│       ├── 01_data_norm.tsv                      # Normalized expression matrix
+│       ├── 01_listGenes.tsv                      # Significant gene list
+│       ├── 02_SumExp_ER                          # SummarizedExperiment object
+│       ├── 03_pathways_object.rds                # KEGG pathways (hiPathia)
+│       ├── 03_path_activity_matrix.rds           # Circuit activation matrix
+│       ├── 03_results_object.rds               # hiPathia results object
+│       ├── 04_wilcoxon_circuitos.csv             # Wilcoxon test results (all circuits)
+│       ├── 04_wilcoxon_circuitos_significativos.csv # Significant circuits only
+│       ├── 04_heatmap_paths.png                  # Heatmap of top 20 circuits
+│       ├── 01_boxplots.png                       # QC: raw vs normalized boxplots
+│       ├── 02_boxplot_norm01.png                 # QC: normalized distribution
+│       ├── data_norm.tsv                         # Alternative normalized matrix
+│       └── listGenes.tsv                         # Alternative gene list
+├── data/                                         # Raw input datasets
+│   ├── BRCA_exp_matrix.tsv                       # Gene expression matrix (TCGA-BRCA)
+│   └── clinical_info_TCGA-BRCA.tsv               # Clinical metadata
+├── pdf/                                          # Reports and pathway figures
+│   ├── analisis_activacion_diferencial_JLS.pdf   # Compiled PDF report
+│   ├── U6-actividad-R-HIPATHIA.pdf               # Activity statement (ignored)
+│   └── rutas_señalizacion/                       # Signaling pathway map screenshots
+│       ├── diabetes.png
+│       ├── endocrinos.png
+│       ├── estrogenos.png
+│       └── tiroidea.png
+├── LICENSE                                       # MIT License
+└── README.md                                     # This file
 ```
 
 ### Methods Summary
@@ -98,24 +112,38 @@ El análisis compara muestras **luminales receptor de estrógenos positivo (ER+)
 
 ```
 .
-├── Analisis_activacion_diferencial.R           # Script principal de análisis (R)
-├── analisis_activacion_diferencial_JLS.Rmd      # Informe en R Markdown (español)
-├── analisis_activacion_diferencial_JLS.pdf      # Informe PDF compilado
-├── clinical_info_TCGA-BRCA.tsv                  # Metadatos clínicos (TCGA-BRCA)
-├── outputs/                                     # Resultados y archivos intermedios
-│   ├── 01_data_norm.tsv                         # Matriz de expresión normalizada
-│   ├── 01_listGenes.tsv                         # Lista de genes significativos
-│   ├── 02_SumExp_ER                             # Objeto SummarizedExperiment
-│   ├── 03_pathways_object.rds                   # Vías KEGG (hiPathia)
-│   ├── 03_path_activity_matrix.rds            # Matriz de activación de circuitos
-│   ├── 03_results_object.rds                    # Objeto de resultados hiPathia
-│   ├── 04_wilcoxon_circuitos.csv                # Resultados Wilcoxon (todos los circuitos)
-│   ├── 04_wilcoxon_circuitos_significativos.csv # Circuitos significativos únicamente
-│   ├── 04_heatmap_paths.png                     # Heatmap de los 20 principales circuitos
-│   ├── 01_boxplots.png                          # QC: boxplots datos crudos vs normalizados
-│   └── 02_boxplot_norm01.png                    # QC: distribución normalizada
-├── taller_hipathia_covid.R                      # Script complementario taller Hipathia
-└── README.md                                    # Este archivo
+├── bin/                                         # Scripts y archivos intermedios/finales
+│   ├── Analisis_activacion_diferencial.R         # Script principal de análisis (R)
+│   ├── analisis_activacion_diferencial_JLS.Rmd   # Informe en R Markdown (español)
+│   ├── taller_hipathia_covid.R                   # Script complementario taller Hipathia
+│   ├── image.RData                               # Imagen grande del espacio de trabajo R (>100 MB, ignorado)
+│   └── outputs/                                  # Resultados y archivos intermedios
+│       ├── 01_data_norm.tsv                      # Matriz de expresión normalizada
+│       ├── 01_listGenes.tsv                      # Lista de genes significativos
+│       ├── 02_SumExp_ER                          # Objeto SummarizedExperiment
+│       ├── 03_pathways_object.rds                # Vías KEGG (hiPathia)
+│       ├── 03_path_activity_matrix.rds           # Matriz de activación de circuitos
+│       ├── 03_results_object.rds               # Objeto de resultados hiPathia
+│       ├── 04_wilcoxon_circuitos.csv             # Resultados Wilcoxon (todos los circuitos)
+│       ├── 04_wilcoxon_circuitos_significativos.csv # Circuitos significativos únicamente
+│       ├── 04_heatmap_paths.png                  # Heatmap de los 20 principales circuitos
+│       ├── 01_boxplots.png                       # QC: boxplots datos crudos vs normalizados
+│       ├── 02_boxplot_norm01.png                 # QC: distribución normalizada
+│       ├── data_norm.tsv                         # Matriz normalizada alternativa
+│       └── listGenes.tsv                         # Lista de genes alternativa
+├── data/                                         # Conjuntos de datos de entrada
+│   ├── BRCA_exp_matrix.tsv                       # Matriz de expresión génica (TCGA-BRCA)
+│   └── clinical_info_TCGA-BRCA.tsv               # Metadatos clínicos
+├── pdf/                                          # Informes y figuras de vías
+│   ├── analisis_activacion_diferencial_JLS.pdf   # Informe PDF compilado
+│   ├── U6-actividad-R-HIPATHIA.pdf               # Enunciado de la actividad (ignorado)
+│   └── rutas_señalizacion/                       # Capturas de pantalla de mapas de señalización
+│       ├── diabetes.png
+│       ├── endocrinos.png
+│       ├── estrogenos.png
+│       └── tiroidea.png
+├── LICENSE                                       # Licencia MIT
+└── README.md                                     # Este archivo
 ```
 
 ### Resumen de Métodos
