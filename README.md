@@ -30,6 +30,15 @@ The analysis compares **ER-positive (ER+)** versus **ER-negative (ER-)** luminal
 
 ```
 .
+├── app/                                         # Interactive Shiny web application
+│   ├── app.R                                    # Main Shiny app (UI + server + data loading)
+│   ├── www/                                     # Static assets
+│   │   ├── UEM.jfif                             # University logo
+│   │   ├── estrogenos.png                       # Estrogen pathway map
+│   │   ├── tiroidea.png                         # Thyroid pathway map
+│   │   ├── diabetes.png                         # Diabetes pathway map
+│   │   └── endocrinos.png                       # Endocrine pathway map
+│   └── README.md                                # App documentation
 ├── bin/                                         # Scripts and intermediate/output files
 │   ├── Analisis_activacion_diferencial.R         # Main analysis script (R)
 │   ├── analisis_activacion_diferencial_JLS.Rmd   # R Markdown report (Spanish)
@@ -64,6 +73,28 @@ The analysis compares **ER-positive (ER+)** versus **ER-negative (ER-)** luminal
 └── README.md                                     # This file
 ```
 
+### Interactive Shiny App
+
+An interactive web application is available in the `app/` directory for exploring the analysis results:
+
+**Features:**
+- **Data Quality Tab:** Boxplots with adjustable gene count (slider 10-200) and toggle between raw/normalized views
+- **Differential Expression Tab:** Top 10 up/downregulated circuits with sortable, color-coded DT tables
+- **PCA Tab:** Interactive PCA plot with zoom/pan, colored by ER status (teal=ER+, sky blue=ER-)
+- **Heatmap Tab:** Interactive heatmap of top 20 circuits by FDR with zoom/pan, sample labels, and Z-score scaling
+- **Pathway Maps Tab:** Browse all 1,876 circuits from 146 KEGG pathways in a searchable table, plus featured pathway maps with direct KEGG links
+
+**Launch the app:**
+```bash
+# Windows
+launch_app.bat
+
+# Or from R
+shiny::runApp("app", port = 7890, launch.browser = TRUE)
+```
+
+See `app/README.md` for detailed documentation.
+
 ### Methods Summary
 
 1. **Data Cleaning:** Intersection of expression and clinical matrices; removal of unannotated/duplicated ER-status samples.
@@ -78,7 +109,7 @@ The analysis compares **ER-positive (ER+)** versus **ER-negative (ER-)** luminal
 
 - R >= 4.0
 - Bioconductor packages: `edgeR`, `limma`, `hipathia`, `SummarizedExperiment`, `AnnotationHub`
-- CRAN packages: `pheatmap`
+- CRAN packages: `shiny`, `ggplot2`, `plotly`, `DT`, `pheatmap`, `data.table`, `bslib`
 
 > **Note:** The original hiPathia KEGG pathway download was performed inside a **Docker** container (`bioconductor/bioconductor_docker:RELEASE_3_18`) due to compatibility issues between modern R/Bioconductor versions and the required AnnotationHub resource.
 
@@ -112,6 +143,15 @@ El análisis compara muestras **luminales receptor de estrógenos positivo (ER+)
 
 ```
 .
+├── app/                                         # Aplicación web interactiva Shiny
+│   ├── app.R                                    # Aplicación Shiny principal (UI + servidor + carga de datos)
+│   ├── www/                                     # Recursos estáticos
+│   │   ├── UEM.jfif                             # Logo de la universidad
+│   │   ├── estrogenos.png                       # Mapa de ruta de estrógenos
+│   │   ├── tiroidea.png                         # Mapa de ruta tiroidea
+│   │   ├── diabetes.png                         # Mapa de ruta de diabetes
+│   │   └── endocrinos.png                       # Mapa de ruta endocrina
+│   └── README.md                                # Documentación de la app
 ├── bin/                                         # Scripts y archivos intermedios/finales
 │   ├── Analisis_activacion_diferencial.R         # Script principal de análisis (R)
 │   ├── analisis_activacion_diferencial_JLS.Rmd   # Informe en R Markdown (español)
@@ -160,6 +200,6 @@ El análisis compara muestras **luminales receptor de estrógenos positivo (ER+)
 
 - R >= 4.0
 - Paquetes de Bioconductor: `edgeR`, `limma`, `hipathia`, `SummarizedExperiment`, `AnnotationHub`
-- Paquetes de CRAN: `pheatmap`
+- Paquetes de CRAN: `shiny`, `ggplot2`, `plotly`, `DT`, `pheatmap`, `data.table`, `bslib`
 
 > **Nota:** La descarga original de las vías KEGG para hiPathia se realizó dentro de un contenedor **Docker** (`bioconductor/bioconductor_docker:RELEASE_3_18`) debido a problemas de compatibilidad entre versiones modernas de R/Bioconductor y el recurso de AnnotationHub requerido.

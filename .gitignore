@@ -22,3 +22,7 @@ pdf/U6-actividad-R-HIPATHIA.pdf
 
 # Workshop script
 bin/taller_hipathia_covid.R
+
+# Generated files
+IMPLEMENTATION_SUMMARY.md
+specs/
